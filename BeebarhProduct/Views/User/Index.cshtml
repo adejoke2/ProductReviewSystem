@@ -1,0 +1,34 @@
+﻿@model IEnumerable<ProductReviewSystem.Models.ViewModels.UserViewModel> 
+
+@{ ViewBag.Title = "User Listing"; }
+
+<h1 class="text-center">Users</h1>
+
+<div class="card">
+    <div class="card-body">
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Email Address</th>
+                    <th>Gender</th>
+                    <th>Delete</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var user in Model)
+                {
+                    <tr>
+                        <td> @user.Name </td>
+                        <td> @user.Email </td>
+                        <td> @user.Gender </td>
+                        <td> <a class="btn btn-danger"asp-controller="User" asp-action="Delete" asp-route-id="@user.Id">Delete</a></td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div><br>
+<div class="mb-3">
+    <a class="btn btn-success" asp-controller="User" asp-action="Create">Register</a>
+</div>
